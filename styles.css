@@ -17,7 +17,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   text-align: center;
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -144,6 +144,25 @@ body {
   display: flex;
   justify-content: space-around;
   margin-top: 1.5rem;
+}
+
+/* Calendar View */
+.calendar-view table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar-view th, .calendar-view td {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+}
+
+.calendar-view .attended {
+  color: green;
+}
+
+.calendar-view .sick-leave {
+  color: orange;
 }
 
 /* Hidden Screens */
