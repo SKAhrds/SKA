@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance App</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen active">
+      <div class="logo">
+        <img src="assets/logo.png" alt="App Logo">
+      </div>
+      <h1>Welcome Back!</h1>
+      <form id="login-form">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="username" placeholder="Email/Employee ID" required>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn-primary">Login</button>
+      </form>
+      <p class="biometric-option">Or use <a href="#" id="biometric-login">Face ID/Fingerprint</a></p>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="screen hidden">
+      <div class="header">
+        <h1>Good Morning, <span id="employee-name">[Employee Name]</span>!</h1>
+        <button id="logout-btn" class="btn-icon"><i class="fas fa-sign-out-alt"></i></button>
+      </div>
+      <div class="attendance-buttons">
+        <button id="clock-in" class="btn-primary pulse">Clock In</button>
+        <button id="clock-out" class="btn-secondary">Clock Out</button>
+      </div>
+      <div class="attendance-status">
+        <p>You are checked in at <span class="highlight">[Time]</span>.</p>
+      </div>
+      <div class="working-hours">
+        <p>Today: <span class="highlight">3h 45m</span> | This Week: <span class="highlight">24h 10m</span></p>
+      </div>
+      <div class="leave-requests">
+        <h2>Upcoming Leaves</h2>
+        <ul>
+          <li><i class="fas fa-calendar-check"></i> Leave Type: Sick | Status: Approved</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
