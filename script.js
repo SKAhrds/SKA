@@ -2,6 +2,7 @@
 const dashboard = document.getElementById('dashboard');
 const attendanceLogs = document.getElementById('attendance-logs');
 const leaveManagement = document.getElementById('leave-management');
+const statistics = document.getElementById('statistics');
 const attendanceLogsBtn = document.getElementById('attendance-logs-btn');
 const leaveManagementBtn = document.getElementById('leave-management-btn');
 const backToDashboardBtns = document.querySelectorAll('#back-to-dashboard');
@@ -21,6 +22,7 @@ backToDashboardBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     attendanceLogs.classList.remove('active');
     leaveManagement.classList.remove('active');
+    statistics.classList.remove('active');
     dashboard.classList.add('active');
   });
 });
