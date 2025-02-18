@@ -3,34 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Attendance App</title>
+  <title>Sandal Kapoor Associates</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <div class="container">
-    
     <!-- Dashboard -->
-    <div id="dashboard" class="screen hidden">
+    <div id="dashboard" class="screen active">
       <div class="header">
-        <h1>Good Morning, <span id="employee-name">[Employee Name]</span>!</h1>
-        <button id="logout-btn" class="btn-icon"><i class="fas fa-sign-out-alt"></i></button>
+        <div class="logo">
+          <img src="assets/logo.png" alt="App Logo">
+        </div>
+        <h1>Good Morning, <span id="employee-name">Taha Vohra</span>!</h1>
+        <button id="logout-btn" class="btn-icon"><i class="fas fa-cog"></i></button>
       </div>
+
+      <!-- Attendance Buttons -->
       <div class="attendance-buttons">
         <button id="clock-in" class="btn-primary pulse">Clock In</button>
         <button id="clock-out" class="btn-secondary">Clock Out</button>
       </div>
+
+      <!-- Attendance Status -->
       <div class="attendance-status">
-        <p>You are checked in at <span class="highlight">[Time]</span>.</p>
+        <p>You are checked in at <span class="highlight">9:00 AM</span>.</p>
       </div>
+
+      <!-- Working Hours -->
       <div class="working-hours">
         <p>Today: <span class="highlight">3h 45m</span> | This Week: <span class="highlight">24h 10m</span></p>
       </div>
+
+      <!-- Leave Requests -->
       <div class="leave-requests">
         <h2>Upcoming Leaves</h2>
         <ul>
           <li><i class="fas fa-calendar-check"></i> Leave Type: Sick | Status: Approved</li>
+          <li><i class="fas fa-calendar-times"></i> Leave Type: Casual | Status: Pending</li>
         </ul>
+      </div>
+
+      <!-- Navigation -->
+      <div class="navigation">
+        <button id="attendance-logs-btn" class="btn-icon"><i class="fas fa-calendar-alt"></i></button>
+        <button id="leave-management-btn" class="btn-icon"><i class="fas fa-file-alt"></i></button>
+      </div>
+    </div>
+
+    <!-- Attendance Logs -->
+    <div id="attendance-logs" class="screen hidden">
+      <div class="header">
+        <button id="back-to-dashboard" class="btn-icon"><i class="fas fa-arrow-left"></i></button>
+        <h1>Attendance Logs</h1>
+      </div>
+      <div class="calendar-view">
+        <p>Calendar view will be displayed here.</p>
+      </div>
+    </div>
+
+    <!-- Leave Management -->
+    <div id="leave-management" class="screen hidden">
+      <div class="header">
+        <button id="back-to-dashboard" class="btn-icon"><i class="fas fa-arrow-left"></i></button>
+        <h1>Leave Management</h1>
+      </div>
+      <form id="leave-form">
+        <div class="input-group">
+          <label for="leave-type">Leave Type</label>
+          <select id="leave-type">
+            <option value="sick">Sick Leave</option>
+            <option value="casual">Casual Leave</option>
+            <option value="paid">Paid Leave</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="leave-start">Start Date</label>
+          <input type="date" id="leave-start" required>
+        </div>
+        <div class="input-group">
+          <label for="leave-end">End Date</label>
+          <input type="date" id="leave-end" required>
+        </div>
+        <button type="submit" class="btn-primary">Apply for Leave</button>
+      </form>
+      <div class="leave-balance">
+        <h2>Leave Balance</h2>
+        <p>Sick: 5 | Casual: 3 | Paid: 10</p>
       </div>
     </div>
   </div>
