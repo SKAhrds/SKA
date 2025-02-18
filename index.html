@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sandal Kapoor Associates</title>
+  <title>Attendance App</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -15,8 +15,8 @@
         <div class="logo">
           <img src="assets/logo.png" alt="App Logo">
         </div>
-        <h1>Good Morning, <span id="employee-name">Taha Vohra</span>!</h1>
-        <button id="logout-btn" class="btn-icon"><i class="fas fa-cog"></i></button>
+        <h1>Good Morning, <span id="employee-name">John Doe</span>!</h1>
+        <button id="settings-btn" class="btn-icon"><i class="fas fa-cog"></i></button>
       </div>
 
       <!-- Attendance Buttons -->
@@ -46,8 +46,8 @@
 
       <!-- Navigation -->
       <div class="navigation">
-        <button id="attendance-logs-btn" class="btn-icon"><i class="fas fa-calendar-alt"></i></button>
-        <button id="leave-management-btn" class="btn-icon"><i class="fas fa-file-alt"></i></button>
+        <button id="attendance-logs-btn" class="btn-icon"><i class="fas fa-calendar-alt"></i> Attendance Logs</button>
+        <button id="leave-management-btn" class="btn-icon"><i class="fas fa-file-alt"></i> Leave Management</button>
       </div>
     </div>
 
@@ -58,7 +58,25 @@
         <h1>Attendance Logs</h1>
       </div>
       <div class="calendar-view">
-        <p>Calendar view will be displayed here.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2023-10-01</td>
+              <td><span class="attended">✔</span></td>
+            </tr>
+            <tr>
+              <td>2023-10-02</td>
+              <td><span class="sick-leave">S</span></td>
+            </tr>
+            <!-- Add more rows dynamically -->
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -90,6 +108,23 @@
       <div class="leave-balance">
         <h2>Leave Balance</h2>
         <p>Sick: 5 | Casual: 3 | Paid: 10</p>
+      </div>
+    </div>
+
+    <!-- Statistics -->
+    <div id="statistics" class="screen hidden">
+      <div class="header">
+        <button id="back-to-dashboard" class="btn-icon"><i class="fas fa-arrow-left"></i></button>
+        <h1>Monthly Statistics</h1>
+      </div>
+      <div class="stats-summary">
+        <p>Total Working Days: <span class="highlight">22</span></p>
+        <p>Total Employees: <span class="highlight">20</span></p>
+        <p>Total Attended Days: <span class="highlight">400</span></p>
+        <p>Total Sick Leave Days: <span class="highlight">15</span></p>
+        <p>Total Personal Leave Days: <span class="highlight">10</span></p>
+        <p>Total Vacation Days: <span class="highlight">25</span></p>
+        <p>Total No Show No Call: <span class="highlight">5</span></p>
       </div>
     </div>
   </div>
