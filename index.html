@@ -1,134 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Attendance App</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Employee Attendance - Sandal Kapoor Associates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px white; }
+            to { text-shadow: 0 0 20px yellow; }
+        }
+        .container {
+            padding: 20px;
+            width: 50%;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+        .form-group input:focus {
+            border-color: #4CAF50;
+            transform: scale(1.05);
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Dashboard -->
-    <div id="dashboard" class="screen active">
-      <div class="header">
-        <div class="logo">
-          <img src="assets/logo.png" alt="App Logo">
-        </div>
-        <h1>Good Morning, <span id="employee-name">John Doe</span>!</h1>
-        <button id="settings-btn" class="btn-icon"><i class="fas fa-cog"></i></button>
-      </div>
-
-      <!-- Attendance Buttons -->
-      <div class="attendance-buttons">
-        <button id="clock-in" class="btn-primary pulse">Clock In</button>
-        <button id="clock-out" class="btn-secondary">Clock Out</button>
-      </div>
-
-      <!-- Attendance Status -->
-      <div class="attendance-status">
-        <p>You are checked in at <span class="highlight">9:00 AM</span>.</p>
-      </div>
-
-      <!-- Working Hours -->
-      <div class="working-hours">
-        <p>Today: <span class="highlight">3h 45m</span> | This Week: <span class="highlight">24h 10m</span></p>
-      </div>
-
-      <!-- Leave Requests -->
-      <div class="leave-requests">
-        <h2>Upcoming Leaves</h2>
-        <ul>
-          <li><i class="fas fa-calendar-check"></i> Leave Type: Sick | Status: Approved</li>
-          <li><i class="fas fa-calendar-times"></i> Leave Type: Casual | Status: Pending</li>
-        </ul>
-      </div>
-
-      <!-- Navigation -->
-      <div class="navigation">
-        <button id="attendance-logs-btn" class="btn-icon"><i class="fas fa-calendar-alt"></i> Attendance Logs</button>
-        <button id="leave-management-btn" class="btn-icon"><i class="fas fa-file-alt"></i> Leave Management</button>
-      </div>
-    </div>
-
-    <!-- Attendance Logs -->
-    <div id="attendance-logs" class="screen hidden">
-      <div class="header">
-        <button id="back-to-dashboard" class="btn-icon"><i class="fas fa-arrow-left"></i></button>
-        <h1>Attendance Logs</h1>
-      </div>
-      <div class="calendar-view">
-        <table>
-          <thead>
+    <header>Employee Attendance - Sandal Kapoor Associates</header>
+    <div class="container">
+        <h2>Mark Attendance</h2>
+        <form id="attendanceForm">
+            <div class="form-group">
+                <label for="employeeName">Employee Name:</label>
+                <input type="text" id="employeeName" name="employeeName" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="checkIn">Check-In Time:</label>
+                <input type="time" id="checkIn" name="checkIn" required>
+            </div>
+            <div class="form-group">
+                <label for="checkOut">Check-Out Time:</label>
+                <input type="time" id="checkOut" name="checkOut">
+            </div>
+            <button type="button" onclick="addAttendance()">Submit</button>
+        </form>
+        <h2>Attendance Records</h2>
+        <table id="attendanceTable">
             <tr>
-              <th>Date</th>
-              <th>Status</th>
+                <th>Employee Name</th>
+                <th>Date</th>
+                <th>Check-In Time</th>
+                <th>Check-Out Time</th>
+                <th>Total Hours</th>
             </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>2023-10-01</td>
-              <td><span class="attended">✔</span></td>
-            </tr>
-            <tr>
-              <td>2023-10-02</td>
-              <td><span class="sick-leave">S</span></td>
-            </tr>
-            <!-- Add more rows dynamically -->
-          </tbody>
         </table>
-      </div>
     </div>
+    <script>
+        function calculateTotalHours(checkIn, checkOut) {
+            if (!checkIn || !checkOut) return "N/A";
+            let checkInTime = new Date("1970-01-01T" + checkIn + "Z");
+            let checkOutTime = new Date("1970-01-01T" + checkOut + "Z");
+            let diff = (checkOutTime - checkInTime) / (1000 * 60 * 60);
+            return diff.toFixed(2) + " hrs";
+        }
+        
+        function addAttendance() {
+            var employeeName = document.getElementById("employeeName").value;
+            var date = document.getElementById("date").value;
+            var checkIn = document.getElementById("checkIn").value;
+            var checkOut = document.getElementById("checkOut").value;
 
-    <!-- Leave Management -->
-    <div id="leave-management" class="screen hidden">
-      <div class="header">
-        <button id="back-to-dashboard" class="btn-icon"><i class="fas fa-arrow-left"></i></button>
-        <h1>Leave Management</h1>
-      </div>
-      <form id="leave-form">
-        <div class="input-group">
-          <label for="leave-type">Leave Type</label>
-          <select id="leave-type">
-            <option value="sick">Sick Leave</option>
-            <option value="casual">Casual Leave</option>
-            <option value="paid">Paid Leave</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <label for="leave-start">Start Date</label>
-          <input type="date" id="leave-start" required>
-        </div>
-        <div class="input-group">
-          <label for="leave-end">End Date</label>
-          <input type="date" id="leave-end" required>
-        </div>
-        <button type="submit" class="btn-primary">Apply for Leave</button>
-      </form>
-      <div class="leave-balance">
-        <h2>Leave Balance</h2>
-        <p>Sick: 5 | Casual: 3 | Paid: 10</p>
-      </div>
-    </div>
-
-    <!-- Statistics -->
-    <div id="statistics" class="screen hidden">
-      <div class="header">
-        <button id="back-to-dashboard" class="btn-icon"><i class="fas fa-arrow-left"></i></button>
-        <h1>Monthly Statistics</h1>
-      </div>
-      <div class="stats-summary">
-        <p>Total Working Days: <span class="highlight">22</span></p>
-        <p>Total Employees: <span class="highlight">20</span></p>
-        <p>Total Attended Days: <span class="highlight">400</span></p>
-        <p>Total Sick Leave Days: <span class="highlight">15</span></p>
-        <p>Total Personal Leave Days: <span class="highlight">10</span></p>
-        <p>Total Vacation Days: <span class="highlight">25</span></p>
-        <p>Total No Show No Call: <span class="highlight">5</span></p>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+            if (employeeName && date && checkIn) {
+                var table = document.getElementById("attendanceTable");
+                var newRow = table.insertRow(-1);
+                newRow.innerHTML = `
+                    <td>${employeeName}</td>
+                    <td>${date}</td>
+                    <td>${checkIn}</td>
+                    <td>${checkOut ? checkOut : "N/A"}</td>
+                    <td>${calculateTotalHours(checkIn, checkOut)}</td>
+                `;
+                document.getElementById("attendanceForm").reset();
+            } else {
+                alert("Please fill out all required fields.");
+            }
+        }
+    </script>
 </body>
 </html>
